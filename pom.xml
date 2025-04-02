@@ -23,7 +23,7 @@
         <sonar.projectKey>maven-standalone-application</sonar.projectKey>
         <sonar.projectName>Maven Standalone Application</sonar.projectName>
         <sonar.host.url>http://172.21.40.70:9000/</sonar.host.url>
-        <sonar.login>squ_6d1594c4c7639347c17cb77fb31be4f7f392c7e7</sonar.login>
+        <sonar.login>squ_34087e9f08786a149d72b531ffb6aea2ea428433</sonar.login>
         <sonar.version>9.9.3.79811</sonar.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${jdk.version}</maven.compiler.source>
