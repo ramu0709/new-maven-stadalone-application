@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -23,7 +23,7 @@
         <sonar.projectKey>maven-standalone-application</sonar.projectKey>
         <sonar.projectName>Maven Standalone Application</sonar.projectName>
         <sonar.host.url>http://172.21.40.70:9000/</sonar.host.url>
-        <sonar.login>squ_9e8a0a7c34685a1a560e09fb17bbcba67ee35b1c</sonar.login>
+        <sonar.login>squ_092d81392297cd159031026e7952c60af271c28d</sonar.login>
         <sonar.version>9.9.3.79811</sonar.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${jdk.version}</maven.compiler.source>
@@ -87,4 +87,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>sample-release</name>
+            <url>http://172.21.40.70:8081/repository/sample-release/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>sample-snapshot</name>
+            <url>http://172.21.40.70:8081/repository/sample-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>
