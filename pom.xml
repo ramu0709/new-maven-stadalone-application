@@ -16,7 +16,7 @@
         <url>http://172.21.40.70:80</url>
     </organization>
 
-    <description>Maven Standalone Application</description>
+    <description>maven-standalone-application</description>
 
     <properties>
         <jdk.version>17</jdk.version>
@@ -24,7 +24,7 @@
         <sonar.projectName>Maven Standalone Application</sonar.projectName>
         <sonar.host.url>http://172.21.40.70:9000/</sonar.host.url>
         <sonar.login>squ_092d81392297cd159031026e7952c60af271c28d</sonar.login>
-        <sonar.version>9.9.3.79811</sonar.version>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${jdk.version}</maven.compiler.source>
         <maven.compiler.target>${jdk.version}</maven.compiler.target>
@@ -56,8 +56,8 @@
 
     <build>
         <plugins>
+            <!-- Build an executable JAR -->
             <plugin>
-                <!-- Build an executable JAR -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.0</version>
@@ -72,18 +72,36 @@
                 </configuration>
             </plugin>
 
+            <!-- JaCoCo Plugin -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.10</version>
+                <executions>
+                    <!-- Attach the JaCoCo agent before tests -->
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- Generate JaCoCo XML report -->
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- SonarQube Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.10.0.2594</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>sonar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
@@ -101,5 +119,4 @@
             <url>http://172.21.40.70:8081/repository/sample-snapshot/</url>
         </snapshotRepository>
     </distributionManagement>
-
 </project>
